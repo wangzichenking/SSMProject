@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--属性文件-->
+    <properties resource="db.properties"></properties>
+    <settings>
+        <!--映射下划线到驼峰命名-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!--配置按需加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+    </settings>
+
+    <!--引入pageHelper插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--reasonable：分页合理化参数，默认值为false。
+            当该参数设置为 true 时，pageNum<=0 时会查询第一页，
+            pageNum>pages（超过总数时），会查询最后一页。
+            默认false 时，直接根据参数进行查询。-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>
